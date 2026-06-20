@@ -1,17 +1,19 @@
-use image::{open, imageops::FilterType};
-fn open_resize_img(img_path:String, x:u32, y:u32) -> image::ImageBuffer<image::Rgb<u8>, Vec<u8>> {
-    let img = open(img_path).unwrap();
-    let resimg = img.resize(x, y, FilterType::Lanczos3);
-    let resimg: image::ImageBuffer<image::Rgb<u8>, Vec<u8>> = resimg.into_rgb8();
-    resimg
-}
-
+mod custom_img;
+use crate::custom_img::CustomImg;
 
 
 fn main() {
     let img_path: String = String::from("img.jpg");
-    let images: image::ImageBuffer<image::Rgb<u8>, Vec<u8>> = open_resize_img(img_path, 100, 100);
+    let x = 100; let y = 100;
+    let images: image::ImageBuffer<image::Rgb<u8>, Vec<u8>> = custom_img::open_resize_img(img_path, x, y);
+    let mut pix:Vec<[u8;3]> = vec![];
     for i in images.pixels() {
-        print!("({}, {}, {})", i[0], i[1], i[2]);
+        let arr = [i[0], i[1], i[2]];
+        pix.push(arr);
+    }
+    let cus_img = CustomImg{horizontal: x, vertical: y, pixel: pix};
+
+    for i in cus_img.pixel {
+        print!("({}, {}, {}), ", i[0], i[1], i[2]);
     }
 }
