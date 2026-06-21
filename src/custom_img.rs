@@ -44,7 +44,20 @@ impl CustomImg {
             self.acii_pixel.push(ascii[brillo_cercano(&bright_of_char, *val)]);
         }
     }
+    pub fn display_ascii_art(caracteres: &[char], ancho: u32) {
+        let ancho = ancho as usize;
+        let mut salida = String::with_capacity(caracteres.len() + caracteres.len() / ancho);
+        for (i, c) in caracteres.iter().enumerate() {
+            salida.push(*c);
+            if (i + 1) % ancho == 0 {
+                salida.push('\n');
+            }
+        }
+        println!("{}", salida);
+    }
 }
+
+
 
 pub fn open_resize_img(img_path:String, x:u32, y:u32) -> image::ImageBuffer<image::Rgb<u8>, Vec<u8>> {
     let img = open(img_path).unwrap();
