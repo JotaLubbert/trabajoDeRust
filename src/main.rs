@@ -1,8 +1,8 @@
 mod custom_img;
 mod search_types;
-mod read_file;
+mod read_files;
 use crate::custom_img::CustomImg;
-use crate::read_file::listed_file_content;
+use crate::read_files::listed_file_content;
 use std::io::{self, Write};
 
 fn read_line(prompt: &str) -> String {
