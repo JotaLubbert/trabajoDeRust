@@ -4,7 +4,8 @@ use crate::custom_img::CustomImg;
 
 fn main() {
     let img_path: String = String::from("img.jpg");
-    let x = 100; let y = 100;
+    let x = 100; let mut y = 100;
+    y = y>>1;
     let images: image::ImageBuffer<image::Rgb<u8>, Vec<u8>> = custom_img::open_resize_img(img_path, x, y);
     let mut pix:Vec<[u8;3]> = vec![];
     for i in images.pixels() {
