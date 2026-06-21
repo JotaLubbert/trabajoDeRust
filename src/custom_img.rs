@@ -1,4 +1,5 @@
 use image::{open, imageops::FilterType};
+use colored::Colorize;
 use crate::custom_img;
 use crate::search_types;
 use crate::search_types::brillo_cercano;
@@ -48,6 +49,18 @@ impl CustomImg {
         let mut salida = String::with_capacity(self.acii_pixel.len() + self.acii_pixel.len() / ancho);
         for (i, c) in self.acii_pixel.iter().enumerate() {
             salida.push(*c);
+            if (i + 1) % ancho == 0 {
+                salida.push('\n');
+            }
+        }
+        println!("{}", salida);
+    }
+    pub fn display_rgb_art(&self) {
+        let ancho = self.horizontal as usize;
+        let mut salida = String::with_capacity(self.acii_pixel.len() + self.acii_pixel.len() / ancho);
+        for (i, rgb) in self.pixel.iter().enumerate() {
+            let curr_str = self.acii_pixel[i].to_string();
+            salida.push_str(&curr_str.truecolor(rgb[0], rgb[1], rgb[2]));
             if (i + 1) % ancho == 0 {
                 salida.push('\n');
             }
