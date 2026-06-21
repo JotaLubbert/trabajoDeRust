@@ -43,10 +43,10 @@ impl CustomImg {
             self.acii_pixel.push(ascii[brillo_cercano(&bright_of_char, *val)]);
         }
     }
-    pub fn display_ascii_art(caracteres: &[char], ancho: u32) {
-        let ancho = ancho as usize;
-        let mut salida = String::with_capacity(caracteres.len() + caracteres.len() / ancho);
-        for (i, c) in caracteres.iter().enumerate() {
+    pub fn display_ascii_art(&self) {
+        let ancho = self.horizontal as usize;
+        let mut salida = String::with_capacity(self.acii_pixel.len() + self.acii_pixel.len() / ancho);
+        for (i, c) in self.acii_pixel.iter().enumerate() {
             salida.push(*c);
             if (i + 1) % ancho == 0 {
                 salida.push('\n');
