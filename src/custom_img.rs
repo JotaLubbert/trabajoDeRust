@@ -57,15 +57,13 @@ impl CustomImg {
     }
     pub fn display_rgb_art(&self) {
         let ancho = self.horizontal as usize;
-        let mut salida = String::with_capacity(self.acii_pixel.len() + self.acii_pixel.len() / ancho);
         for (i, rgb) in self.pixel.iter().enumerate() {
             let curr_str = self.acii_pixel[i].to_string();
-            salida.push_str(&curr_str.truecolor(rgb[0], rgb[1], rgb[2]));
+            print!("{}", curr_str.truecolor(rgb[0], rgb[1], rgb[2]));
             if (i + 1) % ancho == 0 {
-                salida.push('\n');
+                print!("\n");
             }
         }
-        println!("{}", salida);
     }
 }
 
