@@ -1,7 +1,5 @@
 use image::{open, imageops::FilterType};
 use colored::Colorize;
-use crate::custom_img;
-use crate::search_types;
 use crate::search_types::brillo_cercano;
 
 pub struct CustomImg{
