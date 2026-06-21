@@ -26,11 +26,23 @@ fn read_dimension(prompt: &str) -> u32 {
         }
     }
 }
- 
+
+fn read_si_no(prompt: &str) -> bool {
+    loop {
+        let input = read_line(prompt).to_lowercase();
+        match input.as_str() {
+            "s" | "si" | "sí" => return true,
+            "n" | "no" => return false,
+            _ => println!("Por favor responde 's' (sí) o 'n' (no)."),
+        }
+    }
+}
+
 fn get_user_input() -> (String, u32, u32) {
     let img_path = read_line("Ruta de la imagen: ");
     let x = read_dimension("Ancho de salida: ");
     let y = read_dimension("Alto de salida: ");
+    let color = read_yes_no("¿Quieres el resultado a color? (s/n): ");
     (img_path, x, y)
 }
 
