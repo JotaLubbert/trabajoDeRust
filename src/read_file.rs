@@ -1,5 +1,4 @@
-use core::num;
-use std::{env, fs::read_to_string};
+use std::fs::read_to_string;
 
 fn read_lines(path:&str)-> Vec<String>{
     read_to_string(path).unwrap() // panic on possible file-reading errors

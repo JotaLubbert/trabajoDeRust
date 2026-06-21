@@ -6,6 +6,7 @@ pub struct CustomImg{
     pub horizontal : u32,
     pub vertical   : u32,
     pub pixel      : Vec<[u8; 3]>,
+    pub acii_pixel : Vec<char>,
 }
 
 impl CustomImg {
@@ -32,12 +33,11 @@ impl CustomImg {
         }
         rel_bright
     }
-    pub fn rgb_to_ascii(&mut self)->Vec<char>{
+    pub fn rgb_to_ascii(&mut self){
         let mut ascii_vect: Vec<char> = vec![];
         let rel_bright = self.relative_Brightness();
         // cosas raras por acá (se lee un json y se compara)
-    
-        ascii_vect
+        
     }
 }
 
