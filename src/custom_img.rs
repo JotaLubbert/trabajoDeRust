@@ -1,6 +1,7 @@
 use image::{open, imageops::FilterType};
 use crate::custom_img;
 use crate::search_types;
+use crate::search_types::brillo_cercano;
 
 pub struct CustomImg{
     pub horizontal : u32,
@@ -33,11 +34,11 @@ impl CustomImg {
         }
         rel_bright
     }
-    pub fn rgb_to_ascii(&mut self){
-        let mut ascii_vect: Vec<char> = vec![];
+    pub fn rgb_to_ascii(&mut self, ascii:Vec<char>, bright_of_char:Vec<f64>){
         let rel_bright = self.relative_Brightness();
-        // cosas raras por acá (se lee un json y se compara)
-        
+        for val in rel_bright.iter() {
+            self.acii_pixel.push(ascii[brillo_cercano(&bright_of_char, *val)]);
+        }
     }
 }
 
