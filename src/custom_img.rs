@@ -1,6 +1,6 @@
-mod search_types;
 use image::{open, imageops::FilterType};
 use crate::custom_img;
+use crate::search_types;
 
 pub struct CustomImg{
     pub horizontal : u32,
@@ -25,15 +25,15 @@ impl CustomImg {
         }
         println!("{}, {}, {}", arr[0], arr[1], arr[2]);
     }
-    fn relative_Brightness(&mut self)->Vec<f32>{
-        let mut rel_bright: Vec<f32> = vec![];
+    fn relative_Brightness(&mut self)->Vec<f64>{
+        let mut rel_bright: Vec<f64> = vec![];
         for i in &self.pixel{
-            rel_bright.push(0.7 * i[0] as f32 + 0.2 * i[1] as f32 + 0.1 * i[2] as f32);
+            rel_bright.push(0.7 * i[0] as f64 + 0.2 * i[1] as f64 + 0.1 * i[2] as f64);
         }
         rel_bright
     }
-    pub fn rgb_to_ascii(&mut self)->Vec<u8>{
-        let mut ascii_vect: Vec<u8> = vec![];
+    pub fn rgb_to_ascii(&mut self)->Vec<char>{
+        let mut ascii_vect: Vec<char> = vec![];
         let rel_bright = self.relative_Brightness();
         // cosas raras por acá (se lee un json y se compara)
     

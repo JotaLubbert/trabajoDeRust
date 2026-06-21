@@ -34,7 +34,7 @@ fn get_user_input() -> (String, u32, u32) {
 }
 
 fn main() {
-    let char_bright = "../resources/CharBright.txt";
+    let char_bright = "resources/CharBright.txt";
     let (ascii, aparent_bright) = listed_file_content(char_bright);
     let (img_path, x, y) = get_user_input();
     let images: image::ImageBuffer<image::Rgb<u8>, Vec<u8>> = custom_img::open_resize_img(img_path, x, y);
