@@ -1,6 +1,6 @@
 mod custom_img;
 use crate::custom_img::CustomImg;
-
+use std::io::{self, Write};
 
 fn main() {
     let img_path: String = String::from("img.jpg");
