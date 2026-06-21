@@ -1,4 +1,4 @@
-pub fn brillo_cercano(lista_brillos: &[f32], objetivo: f32) -> usize {
+pub fn brillo_cercano(lista_brillos: &[f64], objetivo: f64) -> usize {
     let idx: usize = lista_brillos.partition_point(|&b| b < objetivo);
     if idx == 0 {
         return 0;
