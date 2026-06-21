@@ -3,6 +3,7 @@ mod search_types;
 mod read_file;
 use crate::custom_img::CustomImg;
 use crate::read_file::listed_file_content;
+use crate::search_types::brillo_cercano;
 use std::io::{self, Write};
 use std::{env, fs::read_to_string};
 
