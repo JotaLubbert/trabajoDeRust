@@ -12,7 +12,16 @@ impl CustomImg {
     */
     pub fn print_rgb_val_of_a_pixel(&mut self, x:u32, y:u32){
         let ind = y*self.horizontal+x;
-        let arr = self.pixel;
+        let mut count = 0;
+        let mut arr: [u8;3] = [0, 0 ,0];
+        for i in &self.pixel{
+            if count == ind {
+                arr = *i;
+                break;
+            }
+            count += 1;
+        }
+        println!("{}, {}, {}", arr[0], arr[1], arr[2]);
     }
 }
 
