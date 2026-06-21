@@ -38,15 +38,14 @@ fn main() {
     let char_bright = "resources/CharBright.txt";
     let (ascii, aparent_bright) = listed_file_content(char_bright);
     let (img_path, x, y) = get_user_input();
-    let images: image::ImageBuffer<image::Rgb<u8>, Vec<u8>> = custom_img::open_resize_img(img_path, x, y>>1);
+    let y_compressed = y >> 1;
+    let images: image::ImageBuffer<image::Rgb<u8>, Vec<u8>> = custom_img::open_resize_img(img_path, x, y_compressed);
     let mut pix:Vec<[u8;3]> = vec![];
     for i in images.pixels() {
         let arr: [u8; 3] = [i[0], i[1], i[2]];
         pix.push(arr);
     }
-    let mut cus_img = CustomImg::new(x, y, pix);
-    cus_img.print_rgb_val_of_a_pixel(35, 75);
-    cus_img.print_rgb_val_of_a_pixel(35, 75);
+    let mut cus_img = CustomImg::new(x, y_compressed, pix);
     cus_img.rgb_to_ascii(ascii, aparent_bright);
     cus_img.display_ascii_art();
 }
