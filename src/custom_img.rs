@@ -8,7 +8,7 @@ pub struct CustomImg{
     horizontal : u32,
     vertical   : u32,
     pixel      : Vec<[u8; 3]>,
-    acii_pixel : Vec<char>,
+    ascii_pixel : Vec<char>,
 }
 
 impl CustomImg {
@@ -16,7 +16,7 @@ impl CustomImg {
     * la idea es hacer que muestre el array de rgb
     */
     pub fn new(h:u32, v:u32, pix:Vec<[u8;3]>) -> Self{
-        Self { horizontal: h, vertical: v, pixel: pix, acii_pixel: vec![]}
+        Self { horizontal: h, vertical: v, pixel: pix, ascii_pixel: vec![]}
     }
     pub fn print_rgb_val_of_a_pixel(&mut self, x:u32, y:u32){
         let ind = y*self.horizontal+x;
@@ -41,13 +41,13 @@ impl CustomImg {
     pub fn rgb_to_ascii(&mut self, ascii:Vec<char>, bright_of_char:Vec<f64>){
         let rel_bright = self.relative_Brightness();
         for val in rel_bright.iter() {
-            self.acii_pixel.push(ascii[brillo_cercano(&bright_of_char, *val)]);
+            self.ascii_pixel.push(ascii[brillo_cercano(&bright_of_char, *val)]);
         }
     }
     pub fn display_ascii_art(&self) {
         let ancho = self.horizontal as usize;
-        let mut salida = String::with_capacity(self.acii_pixel.len() + self.acii_pixel.len() / ancho);
-        for (i, c) in self.acii_pixel.iter().enumerate() {
+        let mut salida = String::with_capacity(self.ascii_pixel.len() + self.ascii_pixel.len() / ancho);
+        for (i, c) in self.ascii_pixel.iter().enumerate() {
             salida.push(*c);
             if (i + 1) % ancho == 0 {
                 salida.push('\n');
@@ -55,10 +55,10 @@ impl CustomImg {
         }
         println!("{}", salida);
     }
-    pub fn display_rgb_art(&self) {
+    pub fn display_color_ascii_art(&self) {
         let ancho = self.horizontal as usize;
         for (i, rgb) in self.pixel.iter().enumerate() {
-            let curr_str = self.acii_pixel[i].to_string();
+            let curr_str = self.ascii_pixel[i].to_string();
             print!("{}", curr_str.truecolor(rgb[0], rgb[1], rgb[2]));
             if (i + 1) % ancho == 0 {
                 print!("\n");

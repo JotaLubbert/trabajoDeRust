@@ -38,18 +38,18 @@ fn read_si_no(prompt: &str) -> bool {
     }
 }
 
-fn get_user_input() -> (String, u32, u32) {
+fn get_user_input() -> (String, u32, u32, bool) {
     let img_path = read_line("Ruta de la imagen: ");
     let x = read_dimension("Ancho de salida: ");
     let y = read_dimension("Alto de salida: ");
     let color = read_si_no("¿Quieres el resultado a color? (s/n): ");
-    (img_path, x, y)
+    (img_path, x, y, color)
 }
 
 fn main() {
     let char_bright = "resources/CharBright.txt";
     let (ascii, aparent_bright) = listed_file_content(char_bright);
-    let (img_path, x, y) = get_user_input();
+    let (img_path, x, y, color) = get_user_input();
     let y_compressed = y >> 1;
     let images: image::ImageBuffer<image::Rgb<u8>, Vec<u8>> = custom_img::open_resize_img(img_path, x, y_compressed);
     let mut pix:Vec<[u8;3]> = vec![];
@@ -59,5 +59,9 @@ fn main() {
     }
     let mut cus_img = CustomImg::new(x, y_compressed, pix);
     cus_img.rgb_to_ascii(ascii, aparent_bright);
-    cus_img.display_ascii_art();
+    if color {
+        cus_img.display_color_ascii_art();
+    } else {
+        cus_img.display_ascii_art();
+    }
 }
