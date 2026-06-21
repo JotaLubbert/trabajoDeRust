@@ -1,4 +1,5 @@
 mod custom_img;
+mod search_types;
 use crate::custom_img::CustomImg;
 use std::io::{self, Write};
 

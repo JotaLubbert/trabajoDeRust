@@ -1,5 +1,5 @@
+mod search_types;
 use image::{open, imageops::FilterType};
-
 use crate::custom_img;
 
 pub struct CustomImg{
