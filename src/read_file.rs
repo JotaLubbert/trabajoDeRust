@@ -16,10 +16,8 @@ pub fn listed_file_content(path:&str)->(Vec<char>, Vec<f64>){
         let number = &text[2..];
         let number = number.parse::<f64>().unwrap();
         let val = fisrs_char.chars().take(1).last().unwrap();
-        println!("{val}: {number}");
         ascii.push(val);
         brightness.push(number);
     }
     (ascii, brightness)
-
 }
