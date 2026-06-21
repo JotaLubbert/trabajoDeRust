@@ -4,16 +4,20 @@ use crate::search_types;
 use crate::search_types::brillo_cercano;
 
 pub struct CustomImg{
-    pub horizontal : u32,
-    pub vertical   : u32,
-    pub pixel      : Vec<[u8; 3]>,
-    pub acii_pixel : Vec<char>,
+    horizontal : u32,
+    vertical   : u32,
+    pixel      : Vec<[u8; 3]>,
+    acii_pixel : Vec<char>,
 }
 
 impl CustomImg {
     /* tanto el x como el y son los indices, (es decir desde 0)
     * la idea es hacer que muestre el array de rgb
     */
+    pub fn new(h:u32, v:u32, pix:Vec<[u8;3]>) -> Self{
+        Self { horizontal: h, vertical: v, pixel: pix, acii_pixel: vec![]}
+    }
+
     pub fn print_rgb_val_of_a_pixel(&mut self, x:u32, y:u32){
         let ind = y*self.horizontal+x;
         let mut count = 0;

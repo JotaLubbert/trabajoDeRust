@@ -44,7 +44,7 @@ fn main() {
         let arr: [u8; 3] = [i[0], i[1], i[2]];
         pix.push(arr);
     }
-    let mut cus_img = CustomImg{horizontal: x, vertical: y, pixel: pix};
+    let mut cus_img = CustomImg::new(x, y, pix);
     cus_img.print_rgb_val_of_a_pixel(35, 75);
     cus_img.print_rgb_val_of_a_pixel(35, 75);
 }
