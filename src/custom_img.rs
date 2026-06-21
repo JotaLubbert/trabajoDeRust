@@ -7,7 +7,13 @@ pub struct CustomImg{
 }
 
 impl CustomImg {
-    
+    /* tanto el x como el y son los indices, (es decir desde 0)
+    * la idea es hacer que muestre el array de rgb
+    */
+    pub fn print_rgb_val_of_a_pixel(&mut self, x:u32, y:u32){
+        let ind = y*self.horizontal+x;
+        let arr = self.pixel;
+    }
 }
 
 pub fn open_resize_img(img_path:String, x:u32, y:u32) -> image::ImageBuffer<image::Rgb<u8>, Vec<u8>> {

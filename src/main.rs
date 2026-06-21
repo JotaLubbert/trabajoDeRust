@@ -8,7 +8,7 @@ fn main() {
     let images: image::ImageBuffer<image::Rgb<u8>, Vec<u8>> = custom_img::open_resize_img(img_path, x, y);
     let mut pix:Vec<[u8;3]> = vec![];
     for i in images.pixels() {
-        let arr = [i[0], i[1], i[2]];
+        let arr: [u8; 3] = [i[0], i[1], i[2]];
         pix.push(arr);
     }
     let cus_img = CustomImg{horizontal: x, vertical: y, pixel: pix};
