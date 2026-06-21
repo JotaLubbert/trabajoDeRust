@@ -1,9 +1,11 @@
 use image::{open, imageops::FilterType};
 
+use crate::custom_img;
+
 pub struct CustomImg{
-    pub horizontal: u32,
-    pub vertical  : u32,
-    pub pixel     : Vec<[u8; 3]>,
+    pub horizontal : u32,
+    pub vertical   : u32,
+    pub pixel      : Vec<[u8; 3]>,
 }
 
 impl CustomImg {
@@ -22,6 +24,20 @@ impl CustomImg {
             count += 1;
         }
         println!("{}, {}, {}", arr[0], arr[1], arr[2]);
+    }
+    fn relative_Brightness(&mut self)->Vec<f32>{
+        let mut rel_bright: Vec<f32> = vec![];
+        for i in &self.pixel{
+            rel_bright.push(0.7 * i[0] as f32 + 0.2 * i[1] as f32 + 0.1 * i[2] as f32);
+        }
+        rel_bright
+    }
+    pub fn rgb_to_ascii(&mut self)->Vec<u8>{
+        let mut ascii_vect: Vec<u8> = vec![];
+        let rel_bright = self.relative_Brightness();
+        // cosas raras por acá (se lee un json y se compara)
+    
+        ascii_vect
     }
 }
 
