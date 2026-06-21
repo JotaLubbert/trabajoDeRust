@@ -17,7 +17,6 @@ impl CustomImg {
     pub fn new(h:u32, v:u32, pix:Vec<[u8;3]>) -> Self{
         Self { horizontal: h, vertical: v, pixel: pix, acii_pixel: vec![]}
     }
-
     pub fn print_rgb_val_of_a_pixel(&mut self, x:u32, y:u32){
         let ind = y*self.horizontal+x;
         let mut count = 0;
