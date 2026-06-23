@@ -43,6 +43,7 @@ impl CustomImg {
         }
     }
     pub fn display_ascii_art(&self) {
+        print!("\n");
         let ancho = self.horizontal as usize;
         let mut salida = String::with_capacity(self.ascii_pixel.len() + self.ascii_pixel.len() / ancho);
         for (i, c) in self.ascii_pixel.iter().enumerate() {
@@ -54,6 +55,7 @@ impl CustomImg {
         println!("{}", salida);
     }
     pub fn display_color_ascii_art(&self) {
+        print!("\n");
         let ancho = self.horizontal as usize;
         for (i, rgb) in self.pixel.iter().enumerate() {
             let curr_str = self.ascii_pixel[i].to_string();
@@ -62,6 +64,7 @@ impl CustomImg {
                 print!("\n");
             }
         }
+        print!("\n");
     }
 }
 
